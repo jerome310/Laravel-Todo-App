@@ -1,0 +1,55 @@
+1) Create the columns sections for the table inside your migrate file
+* add a column for the title
+* add a description column
+* add a number indicating the values posted inside the database (Possible might not need to add this)
+
+2) Grab the welcome route and put it inside your controller file
+* Import the location of where your todocontroller is coming from
+* 
+
+3) Create a route that can post the values that'll come from the controller file inside your database
+
+4) Add a token inside your form which is @csrf
+
+5) Create a route that'll post values inside your database with a function that's using the store function for your todoController function
+* request() means: you're displaying the value for attributes inside your html tags
+* validate() means: That it is basically setting a set of rules that need to be meet inside the method
+
+6) Create a variable that'll ::all() your data from the index function that connects to your variable. Next create an array that's connected to your return view that'll assign the value to your variable. After that go to your welcome page and foreach your html and then use blade templating to target your title and description so it can display on the browser page
+
+7) Create a restful function called update() and inside that function you're going to use the $todo that'll access the model and target it to the restful function update() inside the update() create array brackets that'll use the value "isDone" inside and assign it true. Lastly inside the parameter for the restful function update you are going to call the Todo model and then after that you are going to call the $todo variable. That's the only way that'll variable will be able to connect with the column inside the database.
+
+
+NEW FEATURE FOR THE PROJECT
+* Adding inside the database a dateTime of when I created the value displaying inside your database
+
+
+
+
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('todos', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->text('description')->nullable;
+            $table->dateTime('created_at');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('todos');
+    }
+};
