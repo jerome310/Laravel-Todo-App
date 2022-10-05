@@ -17,8 +17,8 @@ class TodoController extends Controller
    public function store(){
       $attributes = request([
          'title' => 'title',
-         'description' => 'description'
-         
+         'description' => 'description',
+         'isDone' => 'default(false)'
       ]);
 
       Todo::create($attributes);
@@ -28,7 +28,7 @@ class TodoController extends Controller
 
    public function update(Todo $todo){
       
-      $todo->update(['isDone' => true]);
+      $todo->update(['id' => '']);
 
       return redirect('/');
    }
